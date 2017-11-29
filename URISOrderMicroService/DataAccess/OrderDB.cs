@@ -77,6 +77,30 @@ namespace URISOrderMicroService.DataAccess
             return str == null ? (object)DBNull.Value : "%" + str + "%";
         }
 
+
+        public static List<Order> GetOrders(DateTime Date, String DeliveryAddress, String DeliveryZipCode, ActiveStatusEnum active, OrderEnum orderDirection)
+        {
+            try
+            {
+                List<Order> retVal = new List<Order>();
+
+                using (SqlConnection connection = new SqlConnection(DBFunctions.ConnectionString))
+                {
+                    SqlCommand command = connection.CreateCommand();
+                    command.CommandText = String.Format(@"
+                        SELECT {0}
+                        FROM [order].[Order]
+                        JOIN[order].[]
+                        "
+                        
+                        
+                        
+                        )
+                }
+            }
+        }
+
+
         public static Order GetOrder(int Id)
         {
             try
@@ -105,7 +129,7 @@ namespace URISOrderMicroService.DataAccess
 
                         else
                         {
-                            ErrorResponce.ErrorMessage(HttpStatusCode.NotFound);
+                            ErrorResponse.ErrorMessage(HttpStatusCode.NotFound);
                         }
                     }
 
